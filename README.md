@@ -71,19 +71,19 @@
 
 **Диаграмма контейнеров (Containers)**
 
-![Компоненты device-service](images/containers.jpg)
+![Диаграмма containers](images/containers.jpg)
 
 **Диаграмма компонентов (Components)**
 
-![Компоненты device-service](images/Components.jpg)
+![Диаграмма components](images/Components.jpg)
 
 **Диаграмма кода (Code)**
 
-![Компоненты device-service](images/class.jpg)
+![Диаграмма class](images/class.png)
 
 # Задание 3. Разработка ER-диаграммы
 
-![Компоненты device-service](images/ER.jpg)
+![Диаграмма ER](images/ER.png)
 
 # Задание 4. Создание и документирование API
 
@@ -94,8 +94,8 @@ AsyncAPI (Kafka/MQTT) обеспечивает реактивность: сис�
 
 ### 2. Документация API
 
-[smart_home_openapi.yaml](./docs/smart_home_openapi.yaml) — REST API спецификация системы "Тёплый дом"
-[smart_home_asyncapi.yaml](./docs/smart_home_asyncapi.yaml) — описание событийной архитектуры (Kafka/Events)
+- [smart_home_openapi.yaml](./docs/smart_home_openapi.yaml) — REST API спецификация системы "Тёплый дом"
+- [smart_home_asyncapi.yaml](./docs/smart_home_asyncapi.yaml) — описание событийной архитектуры (Kafka/Events)
 
 # Задание 5. Работа с docker и docker-compose
 
