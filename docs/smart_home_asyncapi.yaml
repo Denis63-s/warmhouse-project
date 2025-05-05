@@ -1,0 +1,42 @@
+asyncapi: '2.6.0'
+info:
+  title: Smart Home Event APIs
+  version: '1.0.0'
+  description: AsyncAPI schema for telemetry and scenario events
+defaultContentType: application/json
+channels:
+  telemetry.temperature:
+    subscribe:
+      operationId: receiveTemperature
+      summary: Подписка на события температуры
+      message:
+        name: TemperatureEvent
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            device_id:
+              type: string
+            value:
+              type: number
+            timestamp:
+              type: string
+              format: date-time
+
+  scenario.executed:
+    publish:
+      operationId: notifyScenarioExecuted
+      summary: Уведомление об исполнении сценария
+      message:
+        name: ScenarioExecuted
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            scenario_id:
+              type: string
+            executed_at:
+              type: string
+              format: date-time
+            status:
+              type: string

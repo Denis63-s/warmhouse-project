@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: Smart Home REST APIs
+  version: 1.0.0
+  description: REST API endpoints for user_service, device_service, scenario_service, device_service_control
+paths:
+  /users/register:
+    post:
+      summary: Регистрация нового пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: { type: string, format: email }
+                password: { type: string }
+                name: { type: string }
+      responses:
+        '201': { description: Успешная регистрация }
+
+  /users/{id}:
+    get:
+      summary: Получение профиля пользователя
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Данные пользователя }
+
+  /devices:
+    post:
+      summary: Регистрация нового устройства
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                serial_number: { type: string }
+                device_type: { type: string }
+                house_id: { type: string }
+      responses:
+        '201': { description: Устройство зарегистрировано }
+
+  /devices/{id}:
+    get:
+      summary: Получение данных об устройстве
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Информация об устройстве }
+
+  /scenarios:
+    post:
+      summary: Создание сценария
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                trigger: { type: string }
+                actions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      device_id: { type: string }
+                      action_type: { type: string }
+                      value: { type: string }
+      responses:
+        '201': { description: Сценарий создан }
+
+  /devices/{id}/actions:
+    post:
+      summary: Управление устройством
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action: { type: string }
+                value: { type: string }
+      responses:
+        '202': { description: Команда принята }
